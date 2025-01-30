@@ -5,7 +5,9 @@ const path = require('path');
 const socketio = require('socket.io');
 const server = http.createServer(app)
 const io = socketio(server);
-
+const dotenv = require('dotenv');
+dotenv.config();
+  
 
 app.set('view engine','ejs');
 const staticFile = path.join(__dirname,'./public')
@@ -18,11 +20,13 @@ io.on('connection',(socket)=>{
    socket.on("disconnect",()=>{
     io.emit("user-disconnected",socket.id);
    })
-})
+})   
 app.get('/',(req,res)=>{
   res.render("index",{})
 })
 
-server.listen(3000,()=>{
-  console.log('Server is running on port 3000');
-})
+const PORT = process.env.PORT || 4000;  
+
+server.listen(PORT,()=>{
+  console.log(`Server is running on port ${PORT}`);
+})       
