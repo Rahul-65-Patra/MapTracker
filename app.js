@@ -7,7 +7,7 @@ const server = http.createServer(app)
 const io = socketio(server);
 const dotenv = require('dotenv');
 dotenv.config();
-  
+
 
 app.set('view engine','ejs');
 const staticFile = path.join(__dirname,'./public')
