@@ -21,6 +21,7 @@ io.on('connection',(socket)=>{
     io.emit("user-disconnected",socket.id);
    })
 })   
+
 app.get('/',(req,res)=>{
   res.render("index",{})
 })
